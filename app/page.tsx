@@ -1,103 +1,134 @@
-import Image from "next/image";
+import Link from 'next/link';
+import ThemeToggle from './components/ThemeToggle';
+
+interface Project {
+  emoji: string;
+  title: string;
+  description: string;
+  url?: string;
+}
+
+const projects: Project[] = [
+  {
+    emoji: "🌍",
+    title: "Power Atlas",
+    description: "Interactive 3D globe visualizing global renewable energy progress with real-time data updates",
+  },
+  {
+    emoji: "🧠",
+    title: "Wildtribe",
+    description: "The renewable energy marketing agency helping cleantech companies get found online",
+  },
+];
 
 export default function Home() {
   return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="max-w-2xl w-full px-6 py-12">
+        {/* Header */}
+        <header className="flex justify-between items-center mb-12">
+          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-600"></div>
+          
+          <nav className="flex items-center gap-4 text-sm">
+            <Link href="/about" className="text-secondary hover:text-primary transition-all duration-200 hover:scale-105">
+              About
+            </Link>
+            <Link href="/thoughts" className="text-secondary hover:text-primary transition-all duration-200 hover:scale-105">
+              Thoughts
+            </Link>
+            <ThemeToggle />
+          </nav>
+        </header>
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+        {/* Hero Section */}
+        <section className="mb-12">
+          <h1 className="text-4xl font-light mb-2">Hey I'm Sam</h1>
+          <p className="text-base text-tertiary mb-6">
+            Designer · Developer
+          </p>
+          <p className="text-sm text-tertiary leading-relaxed">
+            I design and build digital products — from marketing sites to web apps. Combining clean 
+            design with solid code to create things that work beautifully.
+          </p>
+        </section>
+
+        {/* Social Links */}
+        <section className="mb-12">
+          <div className="flex gap-6 text-sm">
+            <Link href="/about" className="flex items-center gap-1.5 text-secondary hover:text-primary transition-all duration-200 hover:scale-105 cursor-pointer">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+              </svg>
+              About
+            </Link>
+            <a href="mailto:hello@example.com" className="flex items-center gap-1.5 text-secondary hover:text-primary transition-all duration-200 hover:scale-105 cursor-pointer">
+              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+              </svg>
+              Email
+            </a>
+            <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-secondary hover:text-primary transition-all duration-200 hover:scale-105 cursor-pointer">
+              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              GitHub
+            </a>
+            <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-secondary hover:text-primary transition-all duration-200 hover:scale-105 cursor-pointer text-sm">
+              X (Twitter)
+            </a>
+          </div>
+        </section>
+
+        {/* Projects Section */}
+        <section className="mb-12">
+          <div className="flex items-center gap-1.5 mb-6">
+            <svg className="w-4 h-4 text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <h2 className="text-muted text-sm">Recent Projects</h2>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+            {projects.map((project, index) => (
+              <div 
+                key={index}
+                className="group p-6 rounded-xl border border-primary bg-secondary card-hover"
+              >
+                <div className="flex items-start gap-3">
+                  <span className="text-2xl">{project.emoji}</span>
+                  <div className="flex-1">
+                    <h3 className="text-base font-medium mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                      {project.title}
+                    </h3>
+                    <p className="text-tertiary text-sm leading-relaxed">
+                      {project.description}
+                    </p>
+                  </div>
+                  <svg className="w-4 h-4 text-muted group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </div>
+              </div>
+            ))}
+          </div>
+          
+          <Link 
+            href="/archive" 
+            className="inline-flex items-center gap-1.5 text-tertiary hover:text-primary transition-all duration-200 hover:scale-105 cursor-pointer text-sm"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+            </svg>
+            Visit my <span className="underline">website archive</span> for more sites I have built
+          </Link>
+        </section>
+
+        {/* Footer */}
+        <footer className="pt-12 border-t border-primary flex justify-between text-xs text-muted">
+          <p>© ItsSam. All rights reserved.</p>
+          <p>London, 5:32</p>
+        </footer>
+      </div>
     </div>
   );
 }
