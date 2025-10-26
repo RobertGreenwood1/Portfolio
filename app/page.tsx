@@ -42,7 +42,7 @@ export default function Home() {
 
         {/* Hero Section */}
         <section className="mb-12">
-          <h1 className="text-4xl font-light mb-2">Hey I'm Sam</h1>
+          <h1 className="text-4xl font-light mb-2">Hey I'm Rob</h1>
           <p className="text-base text-tertiary mb-6">
             Designer · Developer
           </p>
@@ -125,7 +125,7 @@ export default function Home() {
 
         {/* Footer */}
         <footer className="pt-12 border-t border-primary flex justify-between text-xs text-muted">
-          <p>© ItsSam. All rights reserved.</p>
+          <p>© ItsRob. All rights reserved.</p>
           <p>London, 5:32</p>
         </footer>
       </div>
