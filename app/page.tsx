@@ -42,7 +42,7 @@ export default function Home() {
 
         {/* Hero Section */}
         <section className="mb-12">
-          <h1 className="text-4xl font-light mb-2">Hey I'm Rob</h1>
+          <h1 className="text-4xl font-light mb-2">Hey I&apos;m Rob</h1>
           <p className="text-base text-tertiary mb-6">
             Designer · Developer
           </p>
