@@ -18,9 +18,6 @@ export const metadata: Metadata = {
   description: "I design and build digital products — from marketing sites to web apps.",
   keywords: ["portfolio", "web development", "design", "digital products"],
   authors: [{ name: "Rob" }],
-  icons: {
-    icon: "/favicon.png",
-  },
   openGraph: {
     title: "Rob's Portfolio",
     description: "I design and build digital products — from marketing sites to web apps.",
