@@ -22,46 +22,63 @@ const getTechColor = (tech: string): string => {
     'BTC': 'bg-orange-200 text-orange-900 dark:bg-orange-900/40 dark:text-orange-300',
     'Rust': 'bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400',
     'Ord': 'bg-slate-100 text-slate-700 dark:bg-slate-800 dark:text-slate-300',
+    'Shopify': 'bg-green-200 text-green-900 dark:bg-green-900/40 dark:text-green-300',
   };
   return colorMap[tech] || 'bg-gray-100 text-gray-700 dark:bg-gray-800 dark:text-gray-300';
 };
 
-const projects: Project[] = [
-  {
-    emoji: "🚐",
-    title: "Van Builder",
-    description: "Interactive 3D globe visualizing global renewable energy progress with real-time data updates",
-    url: "https://www.chewydesignco.com/van-builder-test",
-    technologies: ["JavaScript", "React"],
-  },
-  {
-    emoji: "🔵",
-    title: "Gensource CRM",
-    description: "The renewable energy marketing agency helping cleantech companies get found online",
-    technologies: ["JavaScript", "React", "Supabase", "Azure"],
-  },
-  {
-    emoji: "📝",
-    title: "BuzzNotes",
-    description: "AI-powered transcription and study app for students and professionals",
-    url: "https://www.buzznotes.app/",
-    technologies: ["Swift", "OpenRouter API"],
-  },
-  {
-    emoji: "🌿",
-    title: "TBreak",
-    description: "Mobile app helping users track and manage their journey to quit cannabis",
-    url: "https://www.tbreakapp.xyz/",
-    technologies: ["Swift"],
-  },
-  {
-    emoji: "🪙",
-    title: "Bitcoin NFT (Ordinal)",
-    description: "Collection of 100 Ordinal NFTs on Bitcoin, sold for 0.01 BTC each",
-    url: "https://magiceden.us/ordinals/marketplace/ordinal-minis",
-    technologies: ["BTC", "Rust", "Ord"],
-  },
-];
+const projectsByCategory: { [key: string]: Project[] } = {
+  "Web Apps": [
+    {
+      emoji: "🔵",
+      title: "Gensource",
+      description: "A B2B platform streamlining communication, quoting, and data management.",
+      url: "https://gensource.vercel.app/",
+      technologies: ["JavaScript", "React", "Supabase", "Azure"],
+    },
+    {
+      emoji: "🚐",
+      title: "Van Builder",
+      description: "Interactive 3D globe visualizing global renewable energy progress with real-time data updates",
+      url: "https://www.chewydesignco.com/van-builder-test",
+      technologies: ["JavaScript", "React"],
+    },
+  ],
+  "iOS Apps": [
+    {
+      emoji: "📝",
+      title: "BuzzNotes",
+      description: "AI-powered transcription and study app for students and professionals",
+      url: "https://www.buzznotes.app/",
+      technologies: ["Swift", "OpenRouter API"],
+    },
+    {
+      emoji: "🌿",
+      title: "TBreak",
+      description: "Mobile app helping users track and manage their journey to quit cannabis",
+      url: "https://www.tbreakapp.xyz/",
+      technologies: ["Swift"],
+    },
+  ],
+  "Crypto": [
+    {
+      emoji: "🪙",
+      title: "Bitcoin NFT (Ordinal)",
+      description: "Collection of 100 Ordinal NFTs on Bitcoin, sold for 0.01 BTC each",
+      url: "https://magiceden.us/ordinals/marketplace/ordinal-minis",
+      technologies: ["BTC", "Rust", "Ord"],
+    },
+  ],
+  "Ecommerce": [
+    {
+      emoji: "🎿",
+      title: "Barkk",
+      description: "A snow pant brand founded in Boulder, CO, focused on functional design and mountain style.",
+      url: "https://www.instagram.com/barkkmag/",
+      technologies: ["Shopify"],
+    },
+  ],
+};
 
 export default function Home() {
   return (
@@ -72,37 +89,21 @@ export default function Home() {
           <div className="w-8 h-8 rounded-full bg-gradient-to-br from-blue-400 to-blue-600"></div>
           
           <nav className="flex items-center gap-4 text-sm">
-            <Link href="/about" className="text-secondary hover:text-primary transition-all duration-200 hover:scale-105">
-              About
-            </Link>
-            <Link href="/thoughts" className="text-secondary hover:text-primary transition-all duration-200 hover:scale-105">
-              Thoughts
-            </Link>
             <ThemeToggle />
           </nav>
         </header>
 
         {/* Hero Section */}
         <section className="mb-12">
-          <h1 className="text-4xl font-light mb-2">Hey I&apos;m Rob</h1>
-          <p className="text-base text-tertiary mb-6">
-            Designer · Developer
-          </p>
+          <h1 className="text-4xl font-light mb-6">Hey I&apos;m Rob</h1>
           <p className="text-sm text-tertiary leading-relaxed">
-            I design and build digital products — from marketing sites to web apps. Combining clean 
-            design with solid code to create things that work beautifully.
+            I&apos;m a creator and software developer driven by the challenge of building something from nothing. I&apos;ve designed and launched iOS apps used by thousands, developed full-scale SaaS platforms, and created brands that blend clean design with real-world utility. My focus is on building intuitive, high-quality products that feel effortless to use.
           </p>
         </section>
 
         {/* Social Links */}
         <section className="mb-12">
           <div className="flex gap-6 text-sm">
-            <Link href="/about" className="flex items-center gap-1.5 text-secondary hover:text-primary transition-all duration-200 hover:scale-105 cursor-pointer">
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-              </svg>
-              About
-            </Link>
             <a href="mailto:contact@robertegreenwood.com" className="flex items-center gap-1.5 text-secondary hover:text-primary transition-all duration-200 hover:scale-105 cursor-pointer">
               <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
@@ -126,79 +127,73 @@ export default function Home() {
             </svg>
             <h2 className="text-muted text-sm">Recent Projects</h2>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
-            {projects.map((project, index) => {
-              const CardContent = (
-                <div>
-                  <div className="flex items-start gap-3">
-                    <span className="text-2xl">{project.emoji}</span>
-                    <div className="flex-1">
-                      <h3 className="text-base font-medium mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                        {project.title}
-                      </h3>
-                      <p className="text-tertiary text-sm leading-relaxed">
-                        {project.description}
-                      </p>
-                    </div>
-                    <svg className="w-4 h-4 text-muted group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
-                    </svg>
-                  </div>
-                  {project.technologies && (
-                    <div className="flex flex-wrap gap-1.5 mt-3 ml-11">
-                      {project.technologies.map((tech, techIndex) => (
-                        <span
-                          key={techIndex}
-                          className={`px-2 py-0.5 text-xs font-medium rounded-md ${getTechColor(tech)}`}
-                        >
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-              );
 
-              if (project.url) {
-                return (
-                  <a
-                    key={index}
-                    href={project.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group p-6 rounded-xl border border-primary bg-secondary card-hover block"
-                  >
-                    {CardContent}
-                  </a>
-                );
-              }
+          {Object.entries(projectsByCategory).map(([category, projects], categoryIndex) => (
+            <div key={categoryIndex} className="mb-8 last:mb-0">
+              <h3 className="text-base font-bold mb-4">{category}</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {projects.map((project, index) => {
+                  const CardContent = (
+                    <div>
+                      <div className="flex items-start gap-3">
+                        <span className="text-2xl">{project.emoji}</span>
+                        <div className="flex-1">
+                          <h4 className="text-base font-medium mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                            {project.title}
+                          </h4>
+                          <p className="text-tertiary text-sm leading-relaxed">
+                            {project.description}
+                          </p>
+                        </div>
+                        <svg className="w-4 h-4 text-muted group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 17L17 7M17 7H7M17 7V17" />
+                        </svg>
+                      </div>
+                      {project.technologies && (
+                        <div className="flex flex-wrap gap-1.5 mt-3 ml-11">
+                          {project.technologies.map((tech, techIndex) => (
+                            <span
+                              key={techIndex}
+                              className={`px-2 py-0.5 text-xs font-medium rounded-md ${getTechColor(tech)}`}
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  );
 
-              return (
-                <div
-                  key={index}
-                  className="group p-6 rounded-xl border border-primary bg-secondary card-hover"
-                >
-                  {CardContent}
-                </div>
-              );
-            })}
-          </div>
-          
-          <Link 
-            href="/archive" 
-            className="inline-flex items-center gap-1.5 text-tertiary hover:text-primary transition-all duration-200 hover:scale-105 cursor-pointer text-sm"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-            </svg>
-            Visit my <span className="underline">website archive</span> for more sites I have built
-          </Link>
+                  if (project.url) {
+                    return (
+                      <a
+                        key={index}
+                        href={project.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="group p-6 rounded-xl border border-primary bg-secondary card-hover block"
+                      >
+                        {CardContent}
+                      </a>
+                    );
+                  }
+
+                  return (
+                    <div
+                      key={index}
+                      className="group p-6 rounded-xl border border-primary bg-secondary card-hover"
+                    >
+                      {CardContent}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
         </section>
 
         {/* Footer */}
-        <footer className="pt-12 border-t border-primary flex justify-between text-xs text-muted">
-          <p>© ItsRob. All rights reserved.</p>
+        <footer className="pt-12 border-t border-primary flex justify-end text-xs text-muted">
           <p><AustinTime /></p>
         </footer>
       </div>
