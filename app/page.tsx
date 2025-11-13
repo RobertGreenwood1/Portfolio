@@ -31,7 +31,7 @@ const projectsByCategory: { [key: string]: Project[] } = {
   "Web Apps": [
     {
       emoji: "🔵",
-      title: "Gensource",
+      title: "Enos",
       description: "A B2B platform streamlining communication, quoting, and data management.",
       url: "https://gensource.vercel.app/",
       technologies: ["JavaScript", "React", "Supabase", "Azure"],
