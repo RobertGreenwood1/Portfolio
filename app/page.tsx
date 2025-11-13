@@ -97,7 +97,7 @@ export default function Home() {
         <section className="mb-12">
           <h1 className="text-4xl font-light mb-6">Hey I&apos;m Rob</h1>
           <p className="text-sm text-tertiary leading-relaxed">
-            I&apos;m a creator and software developer driven by the challenge of building something from nothing. I&apos;ve designed and launched iOS apps used by thousands, developed full-scale SaaS platforms, and created brands that blend clean design with real-world utility. My focus is on building intuitive, high-quality products that feel effortless to use.
+            I&apos;m a creator and software developer who loves taking an idea from nothing and turning it into something real. I&apos;ve designed and launched iOS apps used by thousands, developed full-scale SaaS platforms, and created brands that blend clean design with real-world utility. My focus is on building intuitive, high-quality products that feel effortless to use.
           </p>
         </section>
 
