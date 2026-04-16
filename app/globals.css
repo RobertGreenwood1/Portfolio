@@ -145,4 +145,23 @@ body {
   .dark .card-hover:hover {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
   }
+
+  /* Blue dot animations */
+  .dot-pulse-ring {
+    animation: dot-pulse 3.5s ease-in-out infinite;
+  }
+
+  .dot-burst {
+    animation: dot-burst 0.8s ease-out forwards;
+  }
+}
+
+@keyframes dot-pulse {
+  0%, 100% { transform: scale(1); opacity: 0.15; }
+  50% { transform: scale(2.2); opacity: 0; }
+}
+
+@keyframes dot-burst {
+  0%   { transform: scale(1);   opacity: 0.9; }
+  100% { transform: scale(4);   opacity: 0; }
 }
