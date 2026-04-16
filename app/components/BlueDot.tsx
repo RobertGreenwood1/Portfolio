@@ -16,7 +16,7 @@ export default function BlueDot() {
   const target = useRef({ x: 0, y: 0 });
   const orbitAngle = useRef(0);
   const proximity = useRef(0);
-  const rafId = useRef<number>();
+  const rafId = useRef<number | undefined>(undefined);
 
   useEffect(() => {
     const MAGNET_RADIUS = 220;

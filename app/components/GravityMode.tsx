@@ -189,6 +189,7 @@ export default function GravityMode({ onClose, initialCursorPos }: Props) {
       for (const { original } of physEls) original.style.visibility = '';
       overlay.remove();
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
